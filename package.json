@@ -14,15 +14,14 @@
   "main": "script.js",
   "scripts": {
     "test": "test",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "node_modules/.bin/eslint --max-warnings=0",
-      "prettier --write",
-      "git add"
-    ]
+    "prepare": "husky install"
   },
   "author": "Aleksey Yuriev",
-  "license": "ISC"
+  "license": "ISC",
+  "lint-staged": {
+    "*.js": [
+      "prettier --write" , 
+      "eslint --max-warnings 0 ."
+    ]
+  }
 }
