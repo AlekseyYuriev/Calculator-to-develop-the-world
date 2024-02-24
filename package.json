@@ -20,7 +20,7 @@
     "*.js": [
       "prettier --write",
       "eslint --max-warnings 0 .",
-      "git add"
+      "git add ."
     ]
   },
   "author": "Aleksey Yuriev",
