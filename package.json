@@ -18,9 +18,9 @@
   },
   "lint-staged": {
     "*.js": [
+      "node_modules/.bin/eslint --max-warnings=0",
       "prettier --write",
-      "eslint --max-warnings 0 .",
-      "git add ."
+      "git add"
     ]
   },
   "author": "Aleksey Yuriev",
