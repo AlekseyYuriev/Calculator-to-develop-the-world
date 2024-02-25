@@ -7,3 +7,12 @@
     url('../fonts/Inter-Regular.woff2') format('woff2'),
     url('../fonts/Inter-Regular.woff') format('woff');
 }
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 200;
+  font-style: normal;
+  src:
+    url('../fonts/Inter-ExtraLightBETA.woff2') format('woff2'),
+    url('../fonts/Inter-ExtraLightBETA.woff') format('woff');
+}

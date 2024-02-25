@@ -5,37 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>"Calculator to develop the world"</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="./script.js" defer></script>
   </head>
   <body class="page">
-    <div class="calc">
-      <div class="calc__screen">
-        <p class="calc__result">0</p>
-      </div>
-      <div class="calc__buttons">
-        <div class="calc__btn calc__btn-ac calc__btn-grey">AC</div>
-        <div class="calc__btn calc__btn-plus-minus calc__btn-grey">+/-</div>
-        <div class="calc__btn calc__btn-percent calc__btn-grey">%</div>
-        <div class="calc__btn calc__btn-division calc__btn-orange">&divide;</div>
+    <header>
+      <h1 class="title">Calculator to develop the world</h1>
+    </header>
+    <main>
+      <section class="calc">
+        <input type="text" class="calc__result" maxlength="9" placeholder="0" />
 
-        <div class="calc__btn calc__btn-seven">7</div>
-        <div class="calc__btn calc__btn-eight">8</div>
-        <div class="calc__btn calc__btn-nine">9</div>
-        <div class="calc__btn calc__btn-multiply calc__btn-orange">&#215;</div>
+        <div class="calc__buttons">
+          <button class="calc__btn calc__btn-ac calc__btn-grey" value="AC">AC</button>
+          <button class="calc__btn calc__btn-plus-minus calc__btn-grey" value="+/-">
+            +/-
+          </button>
+          <button class="calc__btn calc__btn-percent calc__btn-grey" value="%">%</button>
+          <button class="calc__btn calc__btn-division calc__btn-orange" value="/">
+            &divide;
+          </button>
 
-        <div class="calc__btn calc__btn-four">4</div>
-        <div class="calc__btn calc__btn-five">5</div>
-        <div class="calc__btn calc__btn-six">6</div>
-        <div class="calc__btn calc__btn-minus calc__btn-orange">&#8722;</div>
+          <button class="calc__btn calc__btn-seven" value="7">7</button>
+          <button class="calc__btn calc__btn-eight" value="8">8</button>
+          <button class="calc__btn calc__btn-nine" value="9">9</button>
+          <button class="calc__btn calc__btn-multiply calc__btn-orange" value="*">
+            &#215;
+          </button>
 
-        <div class="calc__btn calc__btn-one">1</div>
-        <div class="calc__btn calc__btn-two">2</div>
-        <div class="calc__btn calc__btn-three">3</div>
-        <div class="calc__btn calc__btn-plus calc__btn-orange">+</div>
+          <button class="calc__btn calc__btn-four" value="4">4</button>
+          <button class="calc__btn calc__btn-five" value="5">5</button>
+          <button class="calc__btn calc__btn-six" value="6">6</button>
+          <button class="calc__btn calc__btn-minus calc__btn-orange" value="-">
+            &#8722;
+          </button>
 
-        <div class="calc__btn calc__btn-zero">0</div>
-        <div class="calc__btn calc__btn-comma">,</div>
-        <div class="calc__btn calc__btn-equal calc__btn-orange">=</div>
-      </div>
-    </div>
+          <button class="calc__btn calc__btn-one" value="1">1</button>
+          <button class="calc__btn calc__btn-two" value="2">2</button>
+          <button class="calc__btn calc__btn-three" value="3">3</button>
+          <button class="calc__btn calc__btn-plus calc__btn-orange" value="+">+</button>
+
+          <button class="calc__btn calc__btn-zero" value="0">0</button>
+          <button class="calc__btn calc__btn-comma" value=".">,</button>
+          <button class="calc__btn calc__btn-equal calc__btn-orange" value="=">=</button>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">Made by Aleksey Yuriev</footer>
   </body>
 </html>
