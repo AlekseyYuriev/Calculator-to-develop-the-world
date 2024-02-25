@@ -1,23 +1,26 @@
 // first number
 let a = '';
-
 // second number
 let b = '';
-
 // operation
 let operation = '';
-
 // result
 let result = false;
-
 // array with possible digits
 const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
-
 // array with possible signs
 const signs = ['/', '*', '-', '+'];
-
 // get input with result
 const display = document.querySelector('.calc__result');
+// get all buttons
+const buttons = document.querySelectorAll('.calc__btn');
+
+// function to remove active class from sign buttons
+function removeActiveClass(elements) {
+  elements.forEach((element) => {
+    element.classList.remove('active');
+  });
+}
 
 // AC (clear all function)
 function clearALL() {
@@ -36,6 +39,7 @@ clearButton.addEventListener('click', clearALL);
 
 // add event to the buttons
 document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
+  removeActiveClass(buttons);
   // check if the clicked element is a button
   if (!evt.target.classList.contains('calc__btn')) {
     return;
@@ -45,12 +49,22 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     return;
   }
 
-  display.value = '';
+  if (a === '' && b === '') {
+    display.value = '';
+  }
+
   // get the value of pressed button
   const key = evt.target.value;
 
   //check if the pressed button is a digit
   if (digits.includes(key)) {
+    if (key === '0' && a === '0' && b === '') {
+      display.value = a;
+      return;
+    } else if (key === '0' && a !== '' && b === '0') {
+      display.value = b;
+      return;
+    }
     if (key === '.' && String(a).includes('.') && b === '') {
       display.value = a;
       return;
@@ -74,15 +88,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       display.value = a;
       return;
     }
-    // if (
-    //   (String(a).includes('e') || String(a).includes('.')) &&
-    //   b === '' &&
-    //   operation === ''
-    // ) {
-    //   a = key;
-    //   display.value = a;
-    //   return;
-    // }
     if (b === '' && operation === '') {
       a += key;
       if (String(a).length > 9) {
@@ -136,7 +141,20 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       }
       b = '';
       operation = key;
-      console.log(a, b, operation);
+      if (String(a).includes('e') && String(a).length > 7) {
+        a = Number(
+          String(Number(String(a).split('e')[0]).toFixed(0)) +
+            'e' +
+            String(a).split('e')[1],
+        );
+      } else if (String(a).includes('.') && String(a).length >= 9) {
+        a = Number(a.toFixed(7));
+      }
+      if (key === '=') {
+        if (b === '') {
+          b = a;
+        }
+      }
       display.value = a;
       return;
     }
@@ -181,10 +199,12 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
 
   // check if the pressed button is a sign
   if (signs.includes(key)) {
+    evt.target.classList.add('active');
     if (a !== '' && b !== '' && result) {
       b = '';
       operation = key;
-      display.value = operation;
+      display.value = a;
+      // display.value = operation;
     } else if (a !== '' && b !== '' && operation !== '') {
       switch (operation) {
         case '+':
@@ -212,7 +232,7 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       console.log(a, b, operation);
     }
     operation = key;
-    display.value = operation;
+    // display.value = operation;
     result = false;
     console.log(a, b, operation);
   }
