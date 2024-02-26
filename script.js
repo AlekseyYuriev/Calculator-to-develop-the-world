@@ -65,14 +65,34 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       display.value = b;
       return;
     }
-    if (key === '.' && String(a).includes('.') && b === '') {
+    if (key === '.' && a === '0' && b === '') {
+      a = '0' + '.';
       display.value = a;
       return;
-    } else if (key === '.' && a !== '' && String(b).includes('.')) {
+    }
+    if (key === '.' && a !== '' && b === '' && operation !== '') {
+      if (String(a).length >= 1) {
+        console.log(a);
+        b = '0' + '.';
+        display.value = b;
+        return;
+      }
+      display.value = a;
+      return;
+    } else if (key === '.' && a !== '' && String(b).includes('.') && !result) {
+      console.log(a, b, operation, result);
       display.value = b;
       return;
     }
     if (operation === '%') {
+      if (key === '.') {
+        a = '0' + '.';
+        b = '';
+        operation = '';
+        result = false;
+        display.value = a;
+        return;
+      }
       a = key;
       b = '';
       operation = '';
@@ -81,6 +101,14 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     }
     if (a !== '' && b !== '' && operation !== '' && result) {
       console.log(a, b, operation, result);
+      if (key === '.') {
+        a = '0' + '.';
+        b = '';
+        operation = '';
+        result = false;
+        display.value = a;
+        return;
+      }
       a = key;
       b = '';
       operation = '';
@@ -89,6 +117,21 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       return;
     }
     if (b === '' && operation === '') {
+      if (key === '.' && b === '' && operation === '' && a === '') {
+        console.log(a);
+        a = '0' + '.';
+        display.value = a;
+        return;
+      }
+      if (key !== '0' && String(a).startsWith('0') && !String(a).startsWith('0.')) {
+        a = key;
+        display.value = a;
+        return;
+      }
+      if (key === '.' && String(a).includes('.')) {
+        display.value = a;
+        return;
+      }
       a += key;
       if (String(a).length > 9) {
         a = key;
@@ -97,6 +140,14 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       }
       display.value = a;
     } else if (a !== '' && b !== '' && result) {
+      if (key === '.' && a !== '' && b !== '') {
+        console.log(a, b, operation);
+        a = '0' + '.';
+        display.value = a;
+        b = '';
+        result = false;
+        return;
+      }
       b = key;
       result = false;
       display.value = b;
@@ -275,6 +326,12 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     console.log(a);
     if (String(a).includes('.') && !String(a).includes('e') && String(a).length > 9) {
       a = Number(a).toFixed(5);
+      for (let i = 0; i <= String(a).length; i++) {
+        if (String(a).endsWith('0')) {
+          console.log(a);
+          a = a.slice(0, -1);
+        }
+      }
     }
     if (String(a).length > 9) {
       a = 'Error';
