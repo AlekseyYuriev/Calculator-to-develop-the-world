@@ -15,6 +15,18 @@ const display = document.querySelector('.calc__result');
 // get all buttons
 const buttons = document.querySelectorAll('.calc__btn');
 
+// get checkbox
+const checkboxButton = document.getElementById('checkbox');
+
+// add function to change color theme to checkbox
+console.log(checkboxButton);
+checkboxButton.addEventListener('click', () => {
+  document.querySelector('.page').classList.toggle('page-color');
+  document.querySelectorAll('.calc__btn-light-grey').forEach((elem) => {
+    elem.classList.toggle('btn-blue');
+  });
+});
+
 // function to remove active class from sign buttons
 function removeActiveClass(elements) {
   elements.forEach((element) => {
@@ -58,19 +70,42 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
 
   //check if the pressed button is a digit
   if (digits.includes(key)) {
+    if (key === '0' && a !== '' && b !== '' && operation !== '' && result) {
+      a = key;
+      b = '';
+      operation = '';
+      result = false;
+      display.value = a;
+      return;
+    }
     if (key === '0' && a === '0' && b === '') {
       display.value = a;
       return;
     } else if (key === '0' && a !== '' && b === '0') {
       display.value = b;
       return;
+    } else if (key === '0' && b === '' && operation !== '') {
+      if (a !== '' && String(a).length >= 1) {
+        b += key;
+        display.value = b;
+        return;
+      }
+      console.log(a, b, operation, result);
+      a = '0';
+      display.value = a;
+      return;
+    } else if (key === '0' && a !== '0' && b !== '0' && operation !== '0' && result) {
+      console.log(a, b, operation, result);
+      a = key;
+      display.value = a;
+      result = false;
+      return;
     }
     if (key === '.' && a === '0' && b === '') {
       a = '0' + '.';
       display.value = a;
       return;
-    }
-    if (key === '.' && a !== '' && b === '' && operation !== '') {
+    } else if (key === '.' && a !== '' && b === '' && operation !== '') {
       if (String(a).length >= 1) {
         console.log(a);
         b = '0' + '.';
@@ -82,6 +117,11 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     } else if (key === '.' && a !== '' && String(b).includes('.') && !result) {
       console.log(a, b, operation, result);
       display.value = b;
+      return;
+    } else if (key === '.' && a === '' && b === '' && operation !== '') {
+      console.log(a, b, operation, result);
+      a = '0' + '.';
+      display.value = a;
       return;
     }
     if (operation === '%') {
@@ -160,13 +200,14 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       }
       display.value = b;
     }
-    console.log(a, b, operation);
     return;
   }
 
   // check if the pressed button is %
   if (key === '%') {
-    console.log(a, b, operation, result);
+    if (a === '' && b === '' && !result) {
+      return;
+    }
     if (a !== '' && b !== '' && operation !== '' && !result) {
       switch (operation) {
         case '+':
@@ -233,6 +274,9 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
 
   // check if the pressed button is +/-
   if (key === '+/-') {
+    if (a === '' && b === '' && !result) {
+      return;
+    }
     if (a !== '' && b === '' && !result) {
       a = Number(a) * -1;
       display.value = a;
@@ -251,6 +295,9 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
   // check if the pressed button is a sign
   if (signs.includes(key)) {
     evt.target.classList.add('active');
+    if (a === '' && b === '' && !result) {
+      return;
+    }
     if (a !== '' && b !== '' && result) {
       b = '';
       operation = key;
@@ -285,11 +332,16 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     operation = key;
     // display.value = operation;
     result = false;
-    console.log(a, b, operation);
+    console.log(a, b, operation, result);
   }
 
   // check if the pressed button is equal
   if (key === '=') {
+    if (a === '' && b === '') {
+      return;
+    } else if (operation === '') {
+      return;
+    }
     if (b === '') {
       b = a;
     }
@@ -328,7 +380,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       a = Number(a).toFixed(5);
       for (let i = 0; i <= String(a).length; i++) {
         if (String(a).endsWith('0')) {
-          console.log(a);
           a = a.slice(0, -1);
         }
       }
