@@ -22,6 +22,10 @@ const checkboxButton = document.getElementById('checkbox');
 console.log(checkboxButton);
 checkboxButton.addEventListener('click', () => {
   document.querySelector('.page').classList.toggle('page-color');
+  document.querySelector('.header__title').classList.toggle('header__title-opacity');
+  document
+    .querySelector('.header__subtitle')
+    .classList.toggle('header__subtitle-opacity');
   document.querySelectorAll('.calc__btn-light-grey').forEach((elem) => {
     elem.classList.toggle('btn-blue');
   });
@@ -33,6 +37,15 @@ function removeActiveClass(elements) {
     element.classList.remove('active');
   });
 }
+
+// add event to the document to use keyboard
+document.onkeydown = (event) => {
+  buttons.forEach((elem) => {
+    if (elem.value == event.key) {
+      elem.click();
+    }
+  });
+};
 
 // AC (clear all function)
 function clearALL() {
@@ -192,6 +205,16 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       result = false;
       display.value = b;
     } else {
+      if (b !== '' && String(b).startsWith('0') && !String(b).includes('.')) {
+        if (key === '.' && String(b).startsWith('0') && !String(b).includes('.')) {
+          b = '0' + '.';
+          display.value = b;
+          return;
+        }
+        b = key;
+        display.value = b;
+        return;
+      }
       b += key;
       if (String(b).length > 9) {
         b = key;
@@ -242,7 +265,7 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       } else if (String(a).includes('.') && String(a).length >= 9) {
         a = Number(a.toFixed(7));
       }
-      if (key === '=') {
+      if (key === 'Enter') {
         if (b === '') {
           b = a;
         }
@@ -261,7 +284,7 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     } else if (String(a).includes('.') && String(a).length >= 9) {
       a = Number(a.toFixed(7));
     }
-    if (key === '=') {
+    if (key === 'Enter') {
       if (b === '') {
         b = a;
       }
@@ -336,7 +359,7 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
   }
 
   // check if the pressed button is equal
-  if (key === '=') {
+  if (key === 'Enter') {
     if (a === '' && b === '') {
       return;
     } else if (operation === '') {
