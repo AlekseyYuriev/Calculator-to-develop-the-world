@@ -1,8 +1,8 @@
 /*normalize*/
-@import url(./vendor/normalize.css);
+@import url(../vendor/normalize.css);
 
 /*fonts*/
-@import url(./vendor/inter.css);
+@import url(../vendor/inter.css);
 
 .page {
   min-width: 320px;
