@@ -19,7 +19,6 @@ const buttons = document.querySelectorAll('.calc__btn');
 const checkboxButton = document.getElementById('checkbox');
 
 // add function to change color theme to checkbox
-console.log(checkboxButton);
 checkboxButton.addEventListener('click', () => {
   document.querySelector('.page').classList.toggle('page-color');
   document.querySelector('.header__title').classList.toggle('header__title-opacity');
@@ -103,12 +102,10 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
         display.value = b;
         return;
       }
-      console.log(a, b, operation, result);
       a = '0';
       display.value = a;
       return;
     } else if (key === '0' && a !== '0' && b !== '0' && operation !== '0' && result) {
-      console.log(a, b, operation, result);
       a = key;
       display.value = a;
       result = false;
@@ -120,7 +117,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       return;
     } else if (key === '.' && a !== '' && b === '' && operation !== '') {
       if (String(a).length >= 1) {
-        console.log(a);
         b = '0' + '.';
         display.value = b;
         return;
@@ -128,11 +124,9 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       display.value = a;
       return;
     } else if (key === '.' && a !== '' && String(b).includes('.') && !result) {
-      console.log(a, b, operation, result);
       display.value = b;
       return;
     } else if (key === '.' && a === '' && b === '' && operation !== '') {
-      console.log(a, b, operation, result);
       a = '0' + '.';
       display.value = a;
       return;
@@ -153,7 +147,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       return;
     }
     if (a !== '' && b !== '' && operation !== '' && result) {
-      console.log(a, b, operation, result);
       if (key === '.') {
         a = '0' + '.';
         b = '';
@@ -171,7 +164,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     }
     if (b === '' && operation === '') {
       if (key === '.' && b === '' && operation === '' && a === '') {
-        console.log(a);
         a = '0' + '.';
         display.value = a;
         return;
@@ -194,7 +186,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       display.value = a;
     } else if (a !== '' && b !== '' && result) {
       if (key === '.' && a !== '' && b !== '') {
-        console.log(a, b, operation);
         a = '0' + '.';
         display.value = a;
         b = '';
@@ -235,7 +226,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       switch (operation) {
         case '+':
           a = Number(a) + (Number(a) * Number(b)) / 100;
-          console.log(a, b, operation, result);
           break;
         case '-':
           a = Number(a) - (Number(a) * Number(b)) / 100;
@@ -291,7 +281,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     }
 
     display.value = a;
-    console.log(a, b, operation, result);
     return;
   }
 
@@ -325,7 +314,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       b = '';
       operation = key;
       display.value = a;
-      // display.value = operation;
     } else if (a !== '' && b !== '' && operation !== '') {
       switch (operation) {
         case '+':
@@ -350,12 +338,9 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
       }
       b = '';
       operation = key;
-      console.log(a, b, operation);
     }
     operation = key;
-    // display.value = operation;
     result = false;
-    console.log(a, b, operation, result);
   }
 
   // check if the pressed button is equal
@@ -391,7 +376,6 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     }
 
     if (String(a).includes('.') && String(a).includes('e')) {
-      console.log(a, b, operation, result);
       a = Number(
         String(Number(String(a).split('e')[0]).toFixed(0)) +
           'e' +
@@ -417,6 +401,5 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     }
     result = true;
     display.value = a;
-    console.log(a, b, operation, result);
   }
 });
