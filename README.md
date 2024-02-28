@@ -4,7 +4,7 @@
 Calculator to develop the world - is a simple calculator developed as a part of an internship test assignment. It works with native JS.
 <h2>2. Link to the task</h2>
 
-<a target='_blank' href='https://storage.yandexcloud.net/alex-frontend-11-90/Innowise%20Lab%20Internship_Simple%20calculator.pdf'>https://storage.yandexcloud.net/alex-frontend-11-90/Innowise%20Lab%20Internship_Simple%20calculator.pdf</a>
+<a target="_blank" href="https://storage.yandexcloud.net/alex-frontend-11-90/Innowise%20Lab%20Internship_Simple%20calculator.pdf">https://storage.yandexcloud.net/alex-frontend-11-90/Innowise%20Lab%20Internship_Simple%20calculator.pdf</a>
 
 <h2>3. How to run the app</h2>
 
@@ -24,4 +24,4 @@ Calculator to develop the world - is a simple calculator developed as a part of 
 
 <h2>5. You can have a look at the deployed app following the link below:</h2>
 
-<a target='_blank' href='https://alekseyyuriev.github.io/Calculator-to-develop-the-world/'>https://alekseyyuriev.github.io/Calculator-to-develop-the-world/</a>
+<a target="_blank" href="https://alekseyyuriev.github.io/Calculator-to-develop-the-world/">https://alekseyyuriev.github.io/Calculator-to-develop-the-world/</a>
