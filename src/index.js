@@ -383,13 +383,15 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
           String(a).split('e')[1],
       );
     }
-    console.log(a);
     if (String(a).includes('.') && !String(a).includes('e') && String(a).length > 9) {
       a = Number(a).toFixed(5);
       for (let i = 0; i <= String(a).length; i++) {
         if (String(a).endsWith('0')) {
           a = a.slice(0, -1);
         }
+      }
+      if (String(a).endsWith('.')) {
+        a = a.slice(0, -1);
       }
     }
     if (String(a).length > 9) {
