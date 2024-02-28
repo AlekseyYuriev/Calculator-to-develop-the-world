@@ -13,12 +13,12 @@ https://storage.yandexcloud.net/alex-frontend-11-90/Innowise%20Lab%20Internship_
 3. `npm run dev` - run the app
 
 <h2>4. Description of the file structure</h2>
-1. In the root folder you can find files that are used to configure and develop the app.
+1. In the <strong>root</strong> folder you can find files that are used to configure and develop the app.
 <br>
-2. `src` folder contains the files of the app including <strong>index.html</strong> and several folders:
+2. <strong>src</strong> folder contains the files of the app including <strong>index.html</strong> and several folders:
 
- - `fonts` - folder with fonts used in the app
- - `pages` - folder with entry files index.js and index.css
+- `fonts` - folder with fonts used in the app
+- `pages` - folder with entry files index.js and index.css
 - `utils` - folder with constants and main application logic
 - `vendor` - folder with fonts and normalize connection
 
