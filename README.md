@@ -1,7 +1,7 @@
 <h1>Calculator to develop the world</h1>
 
 <h2>1. Project description</h2>
-Calculator to develop the world - is a simple calculator developed as a part of an internship test assignment. It works with native JS.
+"Calculator to develop the world" is a simple calculator developed as a part of an internship test assignment. It works with native JS.
 <h2>2. Link to the task</h2>
 
 https://storage.yandexcloud.net/alex-frontend-11-90/Innowise%20Lab%20Internship_Simple%20calculator.pdf
@@ -20,8 +20,8 @@ https://storage.yandexcloud.net/alex-frontend-11-90/Innowise%20Lab%20Internship_
 - `fonts` - folder with fonts used in the app
 - `pages` - folder with entry files index.js and index.css
 - `utils` - folder with constants and main application logic
-- `vendor` - folder with fonts and normalize connection
+- `vendor` - folder with <strong>fonts</strong> and <strong>normalize</strong> connection
 
-<h2>5. You can have a look at the deployed app following the link below:</h2>
+<h2>5. Link to the deployed app</h2>
 
 https://alekseyyuriev.github.io/Calculator-to-develop-the-world/
