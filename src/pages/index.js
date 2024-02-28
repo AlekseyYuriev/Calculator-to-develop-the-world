@@ -10,6 +10,7 @@ import {
   headerTitle,
   headerSubtitle,
   lightGrayButtons,
+  allButtonsElement,
 } from '../utils/constants';
 
 // import calculate functions
@@ -38,6 +39,5 @@ document.onkeydown = (event) => {
 clearButton.addEventListener('click', clearALL);
 
 // add event to the buttons
-document
-  .querySelector('.calc__buttons')
-  .addEventListener('click', (evt) => calculate(evt));
+
+allButtonsElement.addEventListener('click', (evt) => calculate(evt));

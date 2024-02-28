@@ -14,3 +14,5 @@ export const headerTitle = document.querySelector('.header__title');
 export const headerSubtitle = document.querySelector('.header__subtitle');
 // get all light-grey buttons
 export const lightGrayButtons = document.querySelectorAll('.calc__btn-light-grey');
+// get the element with all buttons
+export const allButtonsElement = document.querySelector('.calc__buttons');
