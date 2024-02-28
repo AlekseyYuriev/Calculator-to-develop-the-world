@@ -1,4 +1,6 @@
-import './styles/style.css';
+// import constants
+import { display, buttons } from './constants';
+
 // first number
 let a = '';
 // second number
@@ -11,25 +13,15 @@ let result = false;
 const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 // array with possible signs
 const signs = ['/', '*', '-', '+'];
-// get input with result
-const display = document.querySelector('.calc__result');
-// get all buttons
-const buttons = document.querySelectorAll('.calc__btn');
 
-// get checkbox
-const checkboxButton = document.getElementById('checkbox');
-
-// add function to change color theme to checkbox
-checkboxButton.addEventListener('click', () => {
-  document.querySelector('.page').classList.toggle('page-color');
-  document.querySelector('.header__title').classList.toggle('header__title-opacity');
-  document
-    .querySelector('.header__subtitle')
-    .classList.toggle('header__subtitle-opacity');
-  document.querySelectorAll('.calc__btn-light-grey').forEach((elem) => {
-    elem.classList.toggle('btn-blue');
-  });
-});
+// AC (clear all function)
+export function clearALL() {
+  a = '';
+  b = '';
+  operation = '';
+  result = false;
+  display.value = '0';
+}
 
 // function to remove active class from sign buttons
 function removeActiveClass(elements) {
@@ -38,32 +30,7 @@ function removeActiveClass(elements) {
   });
 }
 
-// add event to the document to use keyboard
-document.onkeydown = (event) => {
-  buttons.forEach((elem) => {
-    if (elem.value == event.key) {
-      elem.click();
-    }
-  });
-};
-
-// AC (clear all function)
-function clearALL() {
-  a = '';
-  b = '';
-  operation = '';
-  result = false;
-  display.value = '0';
-}
-
-// get AC button
-const clearButton = document.querySelector('.calc__btn-ac');
-
-// add clearAll function to AC button
-clearButton.addEventListener('click', clearALL);
-
-// add event to the buttons
-document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
+export function calculate(evt) {
   removeActiveClass(buttons);
   // check if the clicked element is a button
   if (!evt.target.classList.contains('calc__btn')) {
@@ -405,4 +372,4 @@ document.querySelector('.calc__buttons').addEventListener('click', (evt) => {
     result = true;
     display.value = a;
   }
-});
+}
