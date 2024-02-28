@@ -7,11 +7,10 @@
 https://storage.yandexcloud.net/alex-frontend-11-90/Innowise%20Lab%20Internship_Simple%20calculator.pdf
 
 <h2>3. How to run the app</h2>
-1.`https://github.com/AlekseyYuriev/Calculator-to-develop-the-world.git` - clone the repository (HTTPS)
-<br>
-2. `npm i` - install the dependencies 
-<br>
-3. `npm run dev` - run the app
+
+- `git clone https://github.com/AlekseyYuriev/Calculator-to-develop-the-world.git` - clone the repository (HTTPS)
+- `npm i` - install the dependencies
+- `npm run dev` - run the app
 
 <h2>4. Description of the file structure</h2>
 1. In the <strong>root</strong> folder you can find files that are used to configure and develop the app.
