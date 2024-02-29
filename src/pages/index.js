@@ -11,6 +11,7 @@ import {
   headerSubtitle,
   lightGrayButtons,
   allButtonsElement,
+  display,
 } from '../utils/constants';
 
 // import calculate functions
@@ -26,6 +27,13 @@ checkboxButton.addEventListener('click', () => {
   });
 });
 
+// function to remove active class from sign buttons
+function removeActiveClass(elements) {
+  elements.forEach((element) => {
+    element.classList.remove('active');
+  });
+}
+
 // add event to the document to use keyboard
 document.onkeydown = (event) => {
   buttons.forEach((elem) => {
@@ -36,8 +44,25 @@ document.onkeydown = (event) => {
 };
 
 // add clearAll function to AC button
-clearButton.addEventListener('click', clearALL);
+clearButton.addEventListener('click', () => {
+  clearALL();
+  display.value = '0';
+});
 
 // add event to the buttons
 
-allButtonsElement.addEventListener('click', (evt) => calculate(evt));
+allButtonsElement.addEventListener('click', (evt) => {
+  removeActiveClass(buttons);
+
+  // check if the clicked element is a button
+  if (!evt.target.classList.contains('calc__btn')) {
+    return;
+  }
+
+  // check if the clicked element is AC button
+  if (evt.target.classList.contains('calc__btn-ac')) {
+    return;
+  }
+
+  calculate(evt);
+});

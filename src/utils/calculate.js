@@ -1,5 +1,5 @@
 // import constants
-import { display, buttons } from './constants';
+import { display } from './constants';
 
 // first number
 let a = '';
@@ -20,31 +20,9 @@ export function clearALL() {
   b = '';
   operation = '';
   result = false;
-  display.value = '0';
-}
-
-// function to remove active class from sign buttons
-function removeActiveClass(elements) {
-  elements.forEach((element) => {
-    element.classList.remove('active');
-  });
 }
 
 export function calculate(evt) {
-  removeActiveClass(buttons);
-  // check if the clicked element is a button
-  if (!evt.target.classList.contains('calc__btn')) {
-    return;
-  }
-  // check if the clicked element is AC button
-  if (evt.target.classList.contains('calc__btn-ac')) {
-    return;
-  }
-
-  if (a === '' && b === '') {
-    display.value = '';
-  }
-
   // get the value of pressed button
   const key = evt.target.value;
 
@@ -73,7 +51,7 @@ export function calculate(evt) {
       a = '0';
       display.value = a;
       return;
-    } else if (key === '0' && a !== '0' && b !== '0' && operation !== '0' && result) {
+    } else if (key === '0' && a !== '0' && b !== '0' && operation !== '' && result) {
       a = key;
       display.value = a;
       result = false;
@@ -275,6 +253,7 @@ export function calculate(evt) {
   // check if the pressed button is a sign
   if (signs.includes(key)) {
     evt.target.classList.add('active');
+
     if (a === '' && b === '' && !result) {
       return;
     }
@@ -332,7 +311,7 @@ export function calculate(evt) {
         a = a * b;
         break;
       case '/':
-        if (b === '0') {
+        if (b === '0' || Number(b) === 0) {
           display.value = 'Error';
           a = '';
           b = '';
@@ -362,6 +341,14 @@ export function calculate(evt) {
       }
     }
     if (String(a).length > 9) {
+      a = 'Error';
+      display.value = a;
+      a = '';
+      b = '';
+      operation = '';
+      return;
+    }
+    if (a === Infinity || a === -Infinity) {
       a = 'Error';
       display.value = a;
       a = '';
